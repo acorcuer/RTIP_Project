@@ -1,6 +1,6 @@
-const int NUM_OF_KEYS = 2;
+const int NUM_OF_KEYS = 3;
 const int THRESHOLD = 5;
-const int analogInputPins[NUM_OF_KEYS] = {A0, A1};
+const int analogInputPins[NUM_OF_KEYS] = {A0, A1, A2};
 
 byte arrPiezoVal[2*NUM_OF_KEYS+1];
 int piezoVal[NUM_OF_KEYS] = {0};
