@@ -8,7 +8,8 @@ int bufferlength = 0;
 char stringBuffer [50];
 
 void setup() {
- Serial.begin(9600);
+ Serial.begin(38400);
+ //Serial.begin(9600);
 }
 
 void loop() {
@@ -21,5 +22,5 @@ int index = 1;
         arrPiezoVal[index++] = piezoVal[count] >> 7;
     }
     Serial.write(arrPiezoVal, sizeof(arrPiezoVal));
-    delay(100);
+    delay(1);
 }
