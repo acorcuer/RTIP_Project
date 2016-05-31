@@ -1,20 +1,22 @@
-#N canvas 190 107 628 360 10;
-#X obj 93 69 f;
-#X obj 127 69 + 1;
-#X obj 93 91 mod 2;
-#X floatatom 93 111 5 0 0 0 - - -, f 5;
-#X obj 93 151 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+#N canvas 134 381 628 360 10;
+#X obj 93 109 f;
+#X obj 127 109 + 1;
+#X obj 93 131 mod 2;
+#X floatatom 93 151 5 0 0 0 - - -, f 5;
+#X obj 93 191 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
 -1;
-#X obj 112 151 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+#X obj 112 191 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
-#X obj 93 130 sel 0 1;
-#X text 154 80 (*3);
+#X obj 93 170 sel 0 1;
+#X text 154 120 (*3);
 #X obj 93 46 inlet bang;
-#X msg 111 170 1;
-#X msg 93 190 0;
-#X obj 93 252 outlet;
-#X text 224 30 Counts bangs \, for the first bang \, will output 1
+#X msg 111 210 1;
+#X msg 93 230 0;
+#X obj 93 292 outlet;
+#X text 224 70 Counts bangs \, for the first bang \, will output 1
 \; for the second bang \, will output 0;
+#X obj 108 67 loadbang;
+#X msg 108 89 1;
 #X connect 0 0 1 0;
 #X connect 0 0 2 0;
 #X connect 1 0 0 1;
@@ -27,3 +29,5 @@
 #X connect 8 0 0 0;
 #X connect 9 0 11 0;
 #X connect 10 0 11 0;
+#X connect 13 0 14 0;
+#X connect 14 0 0 1;
