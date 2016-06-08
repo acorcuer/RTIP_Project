@@ -45,12 +45,18 @@ int index = 1;
  for (int count; count < NUM_OF_KEYS; count++)
     {
         piezoVal[count] = analogRead(analogInputPins[count]);
-        if (piezoVal[count]>THRESHOLD){
           arrPiezoVal[index++] = piezoVal[count] & 0x007f;
-          arrPiezoVal[index++] = piezoVal[count] >> 7;        
-        }     
-              
+          arrPiezoVal[index++] = piezoVal[count] >> 7;          
     }
+    Serial.print("A0: ");
+          Serial.print(piezoVal[0]);
+          Serial.print("\t");
+          Serial.print("A1: ");
+          Serial.print(piezoVal[1]);
+          Serial.print("\t");
+          Serial.print("A2: ");
+          Serial.print(piezoVal[2]);
+          Serial.println();
   Serial.write(arrPiezoVal, sizeof(arrPiezoVal));
   /* Accelerometer information */
     time = millis();
@@ -63,8 +69,9 @@ int index = 1;
     Z = rawZ/256.00; // used for angle calculations
     rolldeg = 180*(atan(Y/sqrt(X*X+Z*Z)))/PI; // calculated angle in degrees
     pitchdeg = 180*(atan(X/sqrt(Y*Y+Z*Z)))/PI; // calculated angle in degrees
-    delay(1);
-  Serial.write(pitchdeg, sizeof(pitchdeg));
-  Serial.write(rolldeg, sizeof(rolldeg));
+
+  Serial.write((byte)pitchdeg);
+  Serial.write((byte)rolldeg);
+      delay(1);
     
 }
