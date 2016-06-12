@@ -202,7 +202,7 @@
 #X obj 383 677 *~;
 #X obj 398 657 r \$0-soundonoff;
 #X obj 238 137 s \$0-soundonoff;
-#X obj 238 120 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+#X obj 238 120 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
 1;
 #X obj 453 82 r \$0-vel1;
 #X obj 464 142 r \$0-vel2;
@@ -247,7 +247,7 @@
 #X restore 815 371 pd reverb2;
 #X obj 825 266 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
-#N canvas 170 140 891 482 accelerometer_mapping 0;
+#N canvas 31 46 891 482 accelerometer_mapping 0;
 #X obj 28 17 inlet X;
 #X obj 138 17 inlet Y;
 #X obj 28 146 -;
@@ -272,7 +272,7 @@
 #X floatatom 714 99 5 0 0 0 - - -, f 5;
 #X obj 658 188 purepd/once;
 #X obj 633 266 line;
-#X obj 633 229 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+#X obj 633 229 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
 #X msg 588 191 0;
 #X obj 588 57 mavg 10;
@@ -282,7 +282,7 @@
 #X obj 658 119 spigot;
 #X msg 658 141 bang;
 #X obj 678 163 pipe 800;
-#X obj 691 101 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+#X obj 691 101 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
 1;
 #X msg 633 246 \$1 60;
 #X obj 669 209 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
@@ -290,7 +290,7 @@
 #X obj 588 119 spigot;
 #X msg 588 141 bang;
 #X obj 598 163 pipe 800;
-#X obj 621 101 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+#X obj 621 101 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
 1;
 #X obj 700 55 loadbang;
 #X floatatom 528 160 5 0 0 0 - - -, f 5;
@@ -312,15 +312,27 @@
 #X obj 219 435 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
 #X obj 298 37 mavg 10;
-#X obj 298 57 moses 50;
-#X floatatom 298 79 5 0 0 0 - - -, f 5;
-#X floatatom 343 78 5 0 0 0 - - -, f 5;
-#X obj 375 164 spigot;
-#X msg 385 186 bang;
-#X obj 385 206 delay 600;
-#X obj 408 146 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+#X obj 298 107 moses 50;
+#X floatatom 298 129 5 0 0 0 - - -, f 5;
+#X floatatom 343 128 5 0 0 0 - - -, f 5;
+#X obj 298 84 spigot;
+#X obj 403 90 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
-#X obj 375 235 purepd/once;
+#X obj 343 235 purepd/once;
+#X floatatom 246 37 5 0 0 0 - - -, f 5;
+#X obj 403 28 r \$0-togate;
+#X msg 363 257 0;
+#X obj 363 279 s \$0-togate;
+#X msg 423 50 1;
+#X obj 324 277 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X msg 298 199 0;
+#X msg 343 202 1;
+#X msg 298 148 bang;
+#X obj 423 72 pipe 1000;
+#X obj 324 319 line;
+#X obj 324 341 outlet;
+#X msg 324 297 \$1 100;
 #X connect 0 0 9 0;
 #X connect 1 0 17 0;
 #X connect 2 0 3 0;
@@ -380,14 +392,28 @@
 #X connect 50 0 51 1;
 #X connect 51 0 54 0;
 #X connect 52 0 53 0;
-#X connect 55 0 56 0;
+#X connect 55 0 59 0;
 #X connect 56 0 57 0;
 #X connect 56 1 58 0;
-#X connect 59 0 60 0;
-#X connect 59 0 63 0;
-#X connect 60 0 61 0;
-#X connect 61 0 62 0;
-#X connect 62 0 59 1;
+#X connect 57 0 70 0;
+#X connect 58 0 69 0;
+#X connect 59 0 56 0;
+#X connect 60 0 59 1;
+#X connect 61 0 64 0;
+#X connect 61 0 67 0;
+#X connect 62 0 59 0;
+#X connect 63 0 66 0;
+#X connect 63 0 60 0;
+#X connect 64 0 65 0;
+#X connect 66 0 71 0;
+#X connect 67 0 74 0;
+#X connect 68 0 67 0;
+#X connect 69 0 61 0;
+#X connect 70 0 61 1;
+#X connect 70 0 68 0;
+#X connect 71 0 60 0;
+#X connect 72 0 73 0;
+#X connect 74 0 72 0;
 #X restore 445 457 pd accelerometer_mapping;
 #X obj 263 470 s \$0-X_tomap;
 #X obj 344 470 s \$0-Y_tomap;
@@ -401,7 +427,7 @@
 #X obj 481 333 s~ notesignal;
 #X obj 383 585 r~ notesignal;
 #N canvas 0 22 450 300 effects 0;
-#X obj 14 15 inlet~;
+#X obj 84 15 inlet~;
 #N canvas 297 113 578 339 phaser 0;
 #X obj 95 105 rpole~;
 #X obj 95 80 rzero_rev~;
@@ -445,24 +471,37 @@
 #X connect 13 0 15 0;
 #X connect 15 0 17 0;
 #X connect 16 0 9 0;
-#X restore 234 45 pd phaser;
-#X obj 234 87 *~;
-#X obj 15 181 dac~;
-#X obj 36 122 rev3~ 100 90 3000 20;
-#X obj 36 144 *~;
-#X obj 76 144 *~;
+#X restore 314 45 pd phaser;
+#X obj 314 87 *~;
+#X obj 85 231 dac~;
+#X obj 84 92 rev3~ 100 90 3000 20;
+#X obj 84 164 *~;
+#X obj 124 164 *~;
+#X obj 144 130 r \$0-effect1;
+#X obj 134 34 s \$0-effect1;
+#X obj 134 15 inlet effect1;
+#X obj 263 170 r \$0-effect1;
+#X obj 248 150 clip~ -0.1 0.1;
+#X obj 248 190 *~;
+#X obj 248 212 *~ 0.6;
+#X connect 0 0 11 0;
 #X connect 1 0 2 0;
-#X connect 2 0 3 0;
-#X connect 2 0 3 1;
 #X connect 4 0 5 0;
 #X connect 4 1 6 0;
 #X connect 5 0 3 0;
 #X connect 6 0 3 1;
+#X connect 7 0 6 1;
+#X connect 7 0 5 1;
+#X connect 9 0 8 0;
+#X connect 10 0 12 1;
+#X connect 11 0 12 0;
+#X connect 12 0 13 0;
+#X connect 13 0 4 0;
 #X restore 677 457 pd effects;
 #X obj 677 437 r~ notesignal;
 #X obj 772 568 delay 2000;
 #X obj 772 608 s \$0-ARDUINOGATE;
-#X obj 772 588 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+#X obj 772 588 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
 1;
 #X obj 69 338 spigot;
 #X obj 115 338 r \$0-ARDUINOGATE;
@@ -470,6 +509,10 @@
 #X obj 772 528 r \$0-firstARDUINOvalue;
 #X msg 772 548 bang;
 #X obj 150 79 sel 1;
+#X obj 233 291 s \$0-notesswitch;
+#X obj 233 273 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+1;
+#X floatatom 476 522 5 0 0 0 - - -, f 5;
 #X connect 1 0 74 0;
 #X connect 2 0 75 0;
 #X connect 3 0 73 0;
@@ -551,6 +594,8 @@
 #X connect 84 0 78 2;
 #X connect 85 0 90 0;
 #X connect 87 0 71 2;
+#X connect 88 0 113 0;
+#X connect 88 0 100 1;
 #X connect 91 0 88 0;
 #X connect 92 0 88 1;
 #X connect 93 0 89 0;
@@ -567,3 +612,4 @@
 #X connect 108 0 109 0;
 #X connect 109 0 102 0;
 #X connect 110 0 107 0;
+#X connect 112 0 111 0;
